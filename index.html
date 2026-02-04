@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<title> 💖 Do të bëhesh Shën Valentini im?</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+  }
+
+  .box {
+    background: rgba(255,255,255,0.2);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+  }
+
+  button {
+    font-size: 1.3rem;
+    padding: 15px 35px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+  }
+
+  #yes {
+    background: #fff;
+    color: #ff4d6d;
+    font-weight: bold;
+  }
+
+  #no {
+    background: #ff4d6d;
+    color: white;
+    position: absolute;
+  }
+
+  .celebration {
+    display: none;
+    animation: fadeIn 1.5s ease forwards;
+  }
+
+  img {
+    max-width: 280px;
+    border-radius: 20px;
+    margin: 20px 0;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+
+  .secret {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    background: rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .heart {
+    position: fixed;
+    top: -20px;
+    font-size: 22px;
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="box" id="question">
+  <h1>Zemra ime 💖<br>Do të bëhesh Shën Valentini im?</h1>
+  <button id="yes">PO 💘</button>
+  <button id="no">JO 🙈</button>
+</div>
+
+<div class="box celebration" id="celebration">
+  <h1>🎉 POOOO !!! 🎉</h1>
+
+  <img src="foto1.JPG" alt="Gjithcka e imja🫀">
+
+  <p>Të dua pafund ❤️</p>
+
+  <div class="secret">
+    💌 <strong>Mesazh sekret vetëm për ty:</strong><br><br>
+    Ti je dashuria ime më e madhe, shoqja ime më e mirë  
+    dhe arsyeja pse çdo ditë ka kuptim.  
+    Faleminderit që je pjesë e jetës sime.  
+    Ky është vetëm një fillim i surprizave për ty… 🌹 Të dua deri në frymën e fundit !
+  </div>
+</div>
+
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  const question = document.getElementById("question");
+  const celebration = document.getElementById("celebration");
+  const music = document.getElementById("music");
+
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.style.transform = "scale(0.7)";
+  });
+
+  yesBtn.addEventListener("click", () => {
+    question.style.display = "none";
+    celebration.style.display = "block";
+    music.play();
+    setInterval(createHeart, 300);
+  });
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }
+</script>
+
+</body>
+</html>
